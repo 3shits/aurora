@@ -55,7 +55,7 @@ const Hero = () => {
           }`}
         >
           <div className="h-px w-20 bg-gradient-to-r from-transparent to-gold"></div>
-          <img src="/sorting-hat.svg" alt="" className="w-12 h-12 opacity-60" />
+          <img src="/ieteLogo.png" alt="" className="w-28 opacity-60" />
           <div className="h-px w-20 bg-gradient-to-l from-transparent to-gold"></div>
         </div>
 
@@ -75,7 +75,7 @@ const Hero = () => {
             <span className="group-hover:scale-125 transition-transform duration-300">
               📍
             </span>
-            Institute Of Engineering and Management
+            IEM , Gurukul Campus
           </span>
           <span className="flex items-center gap-2 text-gray-400 hover:text-gold transition-colors duration-300 group">
             <span className="group-hover:scale-125 transition-transform duration-300">
