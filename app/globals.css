@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gradient-hero: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(26, 26, 46, 0.8) 50%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+    --gryffindor: #740001;
+    --ravenclaw: #0e1a40;
+    --hufflepuff: #ffd700;
+    --slytherin: #1a472a;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-gray-100 min-h-screen;
+  }
+}
+
+@layer components {
+  .magical-border {
+    @apply border-2 border-gold shadow-lg shadow-gold/20;
+  }
+
+  .magical-glow {
+    @apply hover:shadow-xl hover:shadow-gold/40 transition-all duration-300;
+  }
+
+  .parchment-bg {
+    background: linear-gradient(
+      135deg,
+      rgba(139, 69, 19, 0.1) 0%,
+      rgba(101, 67, 33, 0.1) 100%
+    );
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      ellipse 800px 400px at center,
+      hsla(45, 80%, 60%, 0.25) 0%,
+      hsla(45, 80%, 55%, 0.15) 30%,
+      hsla(45, 80%, 50%, 0.05) 50%,
+      transparent 70%
+    );
+    filter: blur(50px);
+    animation: shimmer 3.5s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}

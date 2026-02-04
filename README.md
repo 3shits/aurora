@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AURORA - Harry Potter Themed Event Website
 
-## Getting Started
+A magical Next.js website for the AURORA event with Harry Potter theming, featuring animated components and interactive registration.
 
-First, run the development server:
+## ✨ Features
 
+### Components Created
+- **Hero** - Full-screen hero with floating magical elements (wands, snitches, sparkles, owl)
+- **Events** - Animated event cards with scroll-triggered entrance animations
+- **Timeline** - Interactive 5-day event schedule with scroll-activated timeline
+- **Highlights** - Feature showcase with background image and shimmer effects
+- **Navigation** - Sticky header with route highlighting
+- **Registration** - Multi-step form with Google Pay placeholder
+
+### Design Features
+- Harry Potter themed with gold accents (#DAA520)
+- Custom SVG assets (wand, snitch, crest, potions, owl, etc.)
+- Shimmer and glow effects throughout
+- Background images with overlays
+- Smooth scroll animations
+- Responsive design (mobile, tablet, desktop)
+
+### Events Included
+- Documentary Event (Feb 23)
+- Coding Competition (Feb 24)
+- Standup Comedy (Feb 25)
+- Quiz (Feb 26)
+- Ideathon (Feb 27)
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Extract the project folder
+2. Navigate to the directory:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd harry-potter-events
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Run development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. Open [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+## 📁 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+harry-potter-events/
+├── app/
+│   ├── layout.tsx          # Root layout
+│   ├── page.tsx            # Home page
+│   ├── register/
+│   │   └── page.tsx        # Registration page
+│   └── globals.css         # Global styles
+├── components/
+│   ├── Hero.tsx            # Hero with animations
+│   ├── Events.tsx          # Event cards
+│   ├── Timeline.tsx        # Event timeline
+│   ├── Highlights.tsx      # Features
+│   └── Navigation.tsx      # Navigation
+├── public/                 # SVG assets
+└── configs...
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📸 Required Images
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**IMPORTANT**: Add these to `/public` folder:
 
-## Deploy on Vercel
+1. **hero-castle.jpg** - Hero background (1920x1080)
+2. **eventbg.jpg** - Section background (1920x1080)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Deploy to Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push to GitHub
+2. Import to Vercel
+3. Deploy! 🎉
+
+See DEPLOYMENT_GUIDE.md for details.
+
+## 🎯 To Customize
+
+Edit `components/Timeline.tsx` for event details.
+Edit `tailwind.config.js` for colors.
+
+---
+
+**Made with ⚡ and magic**
