@@ -12,7 +12,7 @@ const Hero = () => {
 
   return (
     <section
-      className="text-center py-16 px-8 magical-glow relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-cover bg-center bg-no-repeat"
+      className="text-center py-5 px-8 magical-glow relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(/hero-castle.jpg)` }}
     >
       {/* Background layers */}
