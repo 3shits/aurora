@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "AURORA - Magical Event",
   description: "Join us for a magical gathering",
+  
 };
 
 export default function RootLayout({
