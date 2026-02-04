@@ -191,9 +191,9 @@ const Merchandise = () => {
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <Link href="/merchandise">
+          {/* <Link href="/merchandise">
             <button className="group relative bg-gradient-to-r from-gold to-yellow-600 hover:from-yellow-600 hover:to-gold text-black font-bold text-lg py-4 px-12 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-gold/50 transform hover:-translate-y-1 hover:scale-105 overflow-hidden">
-              {/* Sparkle effect on button */}
+              
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
               <span className="relative z-10 flex items-center gap-3">
                 Explore All Merchandise
@@ -202,11 +202,7 @@ const Merchandise = () => {
                 </span>
               </span>
             </button>
-          </Link>
-          <p className="text-gray-400 text-sm mt-4">
-            Limited edition items • Free owl post shipping on orders over 500
-            Galleons
-          </p>
+          </Link> */}
         </div>
       </div>
 
