@@ -26,10 +26,10 @@ const Hero = () => {
       {/* Hogwarts Crest - faded in background */}
 
       {/* Main content */}
-      <div className="relative z-10 max-w-4xl mx-auto">
+      <div className="relative z-10 max-w-5xl mx-auto">
         <div className=" flex flex-row justify-between">
-          <img src="/iem.png" className="w-20 h-16 opacity-90 " />
-          <img src="/uem.png" className="w-24 h-20 opacity-90" />
+          <img src="/iemlogo.webp" className="w-24 h-20 opacity-90 " />
+          <img src="/uem.webp" className="w-28 h-24 opacity-90" />
         </div>
         {/* Title with fade-in animation */}
         <div className="w-full flex justify-center">
@@ -45,7 +45,7 @@ const Hero = () => {
 
         {/* Subtitle with delayed fade-in */}
         <p
-          className={`mb-10 text-lg text-foreground/80 md:text-xl lg:text-2xl font-body text-gray-300 transition-all duration-1000 delay-200 ${
+          className={`mb-10 text-lg text-foreground/80 md:text-xl lg:text-2xl font-body text-gray-400 transition-all duration-1000 delay-200 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
