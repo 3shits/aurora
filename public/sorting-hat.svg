@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100" height="120">
+  <defs>
+    <linearGradient id="hatGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B7355;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#654321;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3d2817;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Hat body -->
+  <path d="M50 15 Q45 20 42 30 Q40 40 35 50 L35 60 Q35 70 40 75 Q45 80 50 80 Q55 80 60 75 Q65 70 65 60 L65 50 Q60 40 58 30 Q55 20 50 15 Z" 
+        fill="url(#hatGradient)" stroke="#2d1810" stroke-width="1.5"/>
+  
+  <!-- Folds and wrinkles -->
+  <path d="M45 25 Q48 30 46 35" stroke="#3d2817" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path d="M52 28 Q50 33 52 38" stroke="#3d2817" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path d="M42 45 Q45 50 43 55" stroke="#2d1810" stroke-width="1.2" fill="none" opacity="0.5"/>
+  <path d="M57 47 Q54 52 56 57" stroke="#2d1810" stroke-width="1.2" fill="none" opacity="0.5"/>
+  
+  <!-- Hat brim -->
+  <ellipse cx="50" cy="80" rx="30" ry="8" fill="#654321" stroke="#3d2817" stroke-width="1"/>
+  <ellipse cx="50" cy="79" rx="28" ry="6" fill="#8B7355" opacity="0.5"/>
+  
+  <!-- Face features -->
+  <!-- Eyes -->
+  <ellipse cx="42" cy="50" rx="2.5" ry="2" fill="#3d2817" opacity="0.7"/>
+  <ellipse cx="58" cy="50" rx="2.5" ry="2" fill="#3d2817" opacity="0.7"/>
+  
+  <!-- Mouth wrinkle -->
+  <path d="M40 62 Q45 60 50 61 Q55 60 60 62" stroke="#3d2817" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path d="M42 65 Q50 63 58 65" stroke="#2d1810" stroke-width="1" fill="none" opacity="0.5"/>
+  
+  <!-- Patch -->
+  <path d="M54 70 L60 70 L60 74 L54 74 Z M55 71 L56 71 L56 73 L55 73 Z M57 71 L58 71 L58 73 L57 73 Z M56 72 L57 72" 
+        stroke="#5d2e0f" stroke-width="0.8" fill="none"/>
+  
+  <!-- Peak curl -->
+  <path d="M50 15 Q52 12 55 10 Q58 9 60 11 Q61 13 59 15" 
+        fill="url(#hatGradient)" stroke="#2d1810" stroke-width="1"/>
+  
+  <!-- Highlight on brim -->
+  <ellipse cx="45" cy="78" rx="8" ry="2" fill="#FFF" opacity="0.1"/>
+  
+  <!-- Texture lines -->
+  <path d="M38 55 Q40 56 42 55" stroke="#8B7355" stroke-width="0.5" fill="none" opacity="0.3"/>
+  <path d="M58 56 Q56 57 54 56" stroke="#8B7355" stroke-width="0.5" fill="none" opacity="0.3"/>
+</svg>
