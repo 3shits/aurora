@@ -47,7 +47,7 @@ const Timeline = () => {
       date: "Feb 23",
       events: [
         {
-          title: "Alohamorous",
+          title: "Alohadocs Day",
           description: "Magical Documentaries",
           color: "gryffindor",
         },
@@ -69,7 +69,7 @@ const Timeline = () => {
       date: "Feb 25",
       events: [
         {
-          title: "Riddicuelus Live",
+          title: "Riddiculous Live",
           description: "Liquid Luck for the Soul",
           color: "ravenclaw",
         },
@@ -80,7 +80,7 @@ const Timeline = () => {
       date: "Feb 26",
       events: [
         {
-          title: "Quizzard",
+          title: "Mindus Accio",
           description: "Seek the Golden Snitch",
           color: "ravenclaw",
         },
@@ -91,7 +91,7 @@ const Timeline = () => {
       date: "Feb 27",
       events: [
         {
-          title: "Hackasta",
+          title: "Hackastra",
           description: "Bold Ideas for Wizards",
           color: "ravenclaw",
         },

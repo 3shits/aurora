@@ -31,7 +31,7 @@ const Events = () => {
   const events = [
     {
       img: "/ron.png",
-      title: "Alohamorous",
+      title: "Alohadocs Day",
       description:
         "Where stories come alive and magic is captured one frame at a time.",
       gradient: "from-hufflepuff/20",
@@ -57,7 +57,7 @@ const Events = () => {
     },
     {
       img: "/hermione.png",
-      title: "Ridicuelus Live",
+      title: "Ridiculous Live",
       description:
         "Where spells meet punchlines and laughter is the strongest magic.",
       gradient: "from-ravenclaw/20",
