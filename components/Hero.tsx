@@ -27,6 +27,10 @@ const Hero = () => {
 
       {/* Main content */}
       <div className="relative z-10 max-w-4xl mx-auto">
+        <div className=" flex flex-row justify-between">
+          <img src="/iem.png" className="w-20 h-16 opacity-90 " />
+          <img src="/uem.png" className="w-24 h-20 opacity-90" />
+        </div>
         {/* Title with fade-in animation */}
         <div className="w-full flex justify-center">
           <img
