@@ -20,7 +20,6 @@ const Timeline = () => {
             if (entry.isIntersecting) {
               setActiveDay((prev) => Math.max(prev, index + 1));
             } else if (entry.boundingClientRect.top > 0) {
-              // Scrolling up - hide days above
               setActiveDay((prev) => Math.min(prev, index));
             }
           });
@@ -100,51 +99,7 @@ const Timeline = () => {
   ];
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-12 overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: `url(/eventsbg.jpg)` }}
-    >
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" />
-      <div
-        className="absolute inset-0"
-        style={{ background: "var(--gradient-hero)" }}
-      />
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-        style={{ backgroundImage: "url(/eventbg.jpg)" }}
-      />
-
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50" />
-
-      {/* Shimmer effect - same as Hero */}
-      <div className="absolute inset-0 shimmer pointer-events-none" />
-
-      {/* Floating magical elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
-        <img
-          src="/magical-sparkles.svg"
-          alt=""
-          className={`absolute top-10 right-20 w-32 transition-all duration-1000 ${
-            mounted ? "opacity-20 scale-100" : "opacity-0 scale-0"
-          }`}
-          style={{ animation: "pulse 4s ease-in-out infinite" }}
-        />
-        <img
-          src="/magical-sparkles.svg"
-          alt=""
-          className={`absolute bottom-20 left-20 w-40 transition-all duration-1000 ${
-            mounted ? "opacity-15 scale-100" : "opacity-0 scale-0"
-          }`}
-          style={{
-            animation: "pulse 5s ease-in-out infinite",
-            animationDelay: "1s",
-          }}
-        />
-      </div>
-
+    <section ref={sectionRef} className="relative py-12 overflow-hidden ">
       <div className="relative z-10">
         <h2 className="text-4xl font-bold text-gold mb-16 text-center font-serif">
           Event Schedule
@@ -249,19 +204,66 @@ const Timeline = () => {
                             {event.description}
                           </p>
 
-                          {/* Color accent bar with glow */}
-                          <div className="relative mt-3 w-16 sm:w-20 h-1 rounded-full overflow-hidden bg-slate-700/30">
-                            <div
-                              className={`absolute inset-0 bg-${event.color} rounded-full ${
-                                dayIndex < activeDay ? "animate-shimmer" : ""
+                          {/* Elder Wand with spell beam */}
+                          <div className="relative mt-4 flex items-center gap-2">
+                            <img
+                              src="/elder wand.png"
+                              alt="Elder Wand"
+                              className={`w-12 sm:w-44 h-auto object-contain transition-all duration-500 ${
+                                dayIndex < activeDay
+                                  ? "opacity-100"
+                                  : "opacity-0"
                               }`}
-                              style={{
-                                boxShadow:
-                                  dayIndex < activeDay
-                                    ? `0 0 10px var(--${event.color})`
-                                    : "none",
-                              }}
                             />
+
+                            {/* Spell beam */}
+                            <div className="relative flex-1 h-1 overflow-hidden">
+                              <div
+                                className={`absolute inset-0 bg-gradient-to-r from-gold via-yellow-400 to-transparent transition-all duration-1000 ${
+                                  dayIndex < activeDay
+                                    ? "opacity-100 scale-x-100"
+                                    : "opacity-0 scale-x-0"
+                                }`}
+                                style={{
+                                  transformOrigin: "left",
+                                  boxShadow:
+                                    dayIndex < activeDay
+                                      ? "0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.4)"
+                                      : "none",
+                                }}
+                              />
+                              {/* Sparkles - appear with delay */}
+                              <div
+                                className={`absolute top-1/2 -translate-y-1/2 left-1/4 w-1.5 h-1.5 bg-white rounded-full transition-all duration-300 delay-700 ${
+                                  dayIndex < activeDay
+                                    ? "opacity-100 scale-100"
+                                    : "opacity-0 scale-0"
+                                }`}
+                                style={{
+                                  boxShadow: "0 0 4px rgba(255, 255, 255, 0.8)",
+                                }}
+                              />
+                              <div
+                                className={`absolute top-1/2 -translate-y-1/2 left-1/2 w-1.5 h-1.5 bg-white rounded-full transition-all duration-300 delay-900 ${
+                                  dayIndex < activeDay
+                                    ? "opacity-100 scale-100"
+                                    : "opacity-0 scale-0"
+                                }`}
+                                style={{
+                                  boxShadow: "0 0 4px rgba(255, 255, 255, 0.8)",
+                                }}
+                              />
+                              <div
+                                className={`absolute top-1/2 -translate-y-1/2 left-3/4 w-1.5 h-1.5 bg-white rounded-full transition-all duration-300 delay-1100 ${
+                                  dayIndex < activeDay
+                                    ? "opacity-100 scale-100"
+                                    : "opacity-0 scale-0"
+                                }`}
+                                style={{
+                                  boxShadow: "0 0 4px rgba(255, 255, 255, 0.8)",
+                                }}
+                              />
+                            </div>
                           </div>
                         </div>
                       ))}
@@ -275,15 +277,6 @@ const Timeline = () => {
       </div>
 
       <style jsx>{`
-        @keyframes shimmer {
-          0% {
-            transform: translateX(-100%);
-          }
-          100% {
-            transform: translateX(100%);
-          }
-        }
-
         @keyframes pulse {
           0%,
           100% {
@@ -294,22 +287,6 @@ const Timeline = () => {
             opacity: 0.4;
             transform: scale(1.05);
           }
-        }
-
-        .animate-shimmer::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.4),
-            transparent
-          );
-          animation: shimmer 2s infinite;
         }
 
         .shimmer {

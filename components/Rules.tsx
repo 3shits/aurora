@@ -1,237 +1,223 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useRef } from "react";
 
 const Rules = () => {
-  const [mounted, setMounted] = useState(false);
   const [activeRule, setActiveRule] = useState<number | null>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const hoverTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const rules = [
     {
-      title: "Registration & Participation",
-      icon: "📜",
+      title: "Alohadocs Day",
       description:
-        "All participants must register before the event begins. Each wizard may participate in multiple events but must follow the designated schedule.",
-      color: "gryffindor",
+        "Groups must submit an India-themed video via Google Form. Duration 1:30–3:00 mins, any language, plus a 2-min explanation. Judging on quality & creativity.",
+      requirements: [
+        "India-themed video submission",
+        "Duration: 1:30-3:00 minutes",
+        "2-minute explanation required",
+        "Judged on quality & creativity",
+      ],
     },
     {
-      title: "Code of Conduct",
-      icon: "⚡",
+      title: "Codium Maxima",
       description:
-        "Maintain respect and sportsmanship throughout all events. Any form of cheating, plagiarism, or unfair means will result in immediate disqualification.",
-      color: "ravenclaw",
+        "Participants must code without viewing the screen. Use of visual aids, external help, or devices is prohibited. Judging based on logic, accuracy, and speed.",
+      requirements: [
+        "Blind coding challenge",
+        "No visual aids allowed",
+        "No external help or devices",
+        "Judged on logic, accuracy & speed",
+      ],
     },
     {
-      title: "Team Formation",
-      icon: "🏆",
+      title: "Ridiculous Live",
       description:
-        "Teams must be formed according to event requirements. Solo events require individual participation, while team events need the specified number of members.",
-      color: "slytherin",
+        "Participants will have 10 minutes to complete the task. There are no restrictions on content, theme, or approach. Evaluation will be based on overall quality and execution.",
+      requirements: [
+        "10-minute time limit",
+        "No content restrictions",
+        "Open theme & approach",
+        "Judged on quality & execution",
+      ],
     },
     {
-      title: "Submission Guidelines",
-      icon: "📝",
+      title: "Mindus Accio",
       description:
-        "All submissions must be made before the deadline. Late submissions will not be accepted. Ensure all work is original and properly documented.",
-      color: "hufflepuff",
+        "Participants must complete the quiz within the allotted duration. There are no restrictions on topics or question format. Evaluation will be based on accuracy, response time, and overall performance.",
+      requirements: [
+        "Timed quiz completion",
+        "No topic restrictions",
+        "Open question format",
+        "Judged on accuracy & speed",
+      ],
     },
     {
-      title: "Judging Criteria",
-      icon: "⭐",
+      title: "Hackastra",
       description:
-        "Projects will be judged on creativity, technical implementation, presentation, and overall impact. Judges' decisions are final and binding.",
-      color: "gryffindor",
-    },
-    {
-      title: "Event Etiquette",
-      icon: "🎭",
-      description:
-        "Arrive on time for all events. Respect the venue, equipment, and fellow participants. Mobile phones must be on silent during presentations.",
-      color: "ravenclaw",
+        "Teams must build an open-source prototype on the spot within the allotted time. AI tools are allowed. PPT presentation required. Pre-built solutions are disallowed.",
+      requirements: [
+        "Build prototype on-site",
+        "AI tools permitted",
+        "PPT presentation mandatory",
+        "No pre-built solutions",
+      ],
     },
   ];
 
-  type ColorClasses = {
-    bg: string;
-    border: string;
-    glow: string;
-    hover: string;
+  const handleMouseEnter = (index: number) => {
+    if (hoverTimerRef.current) {
+      clearTimeout(hoverTimerRef.current);
+    }
+    hoverTimerRef.current = setTimeout(() => {
+      setActiveRule(index);
+    }, 100);
   };
 
-  const getColorClasses = (color: string): ColorClasses => {
-    const colors: Record<string, ColorClasses> = {
-      gryffindor: {
-        bg: "bg-red-900/20",
-        border: "border-red-500/50",
-        glow: "shadow-red-500/20",
-        hover: "hover:border-red-500 hover:shadow-red-500/40",
-      },
-      slytherin: {
-        bg: "bg-green-900/20",
-        border: "border-green-500/50",
-        glow: "shadow-green-500/20",
-        hover: "hover:border-green-500 hover:shadow-green-500/40",
-      },
-      ravenclaw: {
-        bg: "bg-blue-900/20",
-        border: "border-blue-500/50",
-        glow: "shadow-blue-500/20",
-        hover: "hover:border-blue-500 hover:shadow-blue-500/40",
-      },
-      hufflepuff: {
-        bg: "bg-yellow-900/20",
-        border: "border-yellow-500/50",
-        glow: "shadow-yellow-500/20",
-        hover: "hover:border-yellow-500 hover:shadow-yellow-500/40",
-      },
-    };
-    return colors[color] || colors.ravenclaw;
+  const handleMouseLeave = () => {
+    if (hoverTimerRef.current) {
+      clearTimeout(hoverTimerRef.current);
+    }
+    setActiveRule(null);
   };
 
   return (
-    <section className="relative py-20 overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-        style={{ backgroundImage: "url(/eventbg.jpg)" }}
-      />
-
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50" />
-
-      {/* Shimmer effect */}
-
-      {/* Floating magical elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-gold rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 3}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gold mb-4 font-serif">
-            Rules & Regulations
+    <section className="relative min-h-screen py-24 md:py-32 overflow-hidden">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-300 to-gold">
+              Event Guidelines
+            </span>
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+
+          <div className="flex items-center justify-center gap-6 mt-8">
+            <div className="h-px w-24 md:w-32 bg-gradient-to-r from-transparent to-gold"></div>
+            <span className="text-gold text-sm md:text-base tracking-[0.3em] uppercase">
+              Sacred Rules
+            </span>
+            <div className="h-px w-24 md:w-32 bg-gradient-to-l from-transparent to-gold"></div>
+          </div>
+
+          <p className="mt-6 text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
             Follow these sacred guidelines to ensure fair play and magical
-            experiences for all participants
+            experiences
           </p>
         </div>
 
-        {/* Rules Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="space-y-6">
           {rules.map((rule, index) => {
-            const colorClasses = getColorClasses(rule.color);
             const isActive = activeRule === index;
 
             return (
               <div
                 key={index}
-                className={`relative group transition-all duration-700 ${
-                  mounted
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-                style={{
-                  transitionDelay: `${index * 100}ms`,
-                }}
-                onMouseEnter={() => setActiveRule(index)}
-                onMouseLeave={() => setActiveRule(null)}
+                className="relative group cursor-pointer"
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={handleMouseLeave}
               >
-                {/* Card */}
                 <div
-                  className={`relative h-full rounded-xl border-2 ${colorClasses.border} ${colorClasses.bg} backdrop-blur-sm p-6 transition-all duration-300 ${colorClasses.hover} ${
-                    isActive ? "scale-105 shadow-2xl" : "shadow-lg"
-                  } ${colorClasses.glow}`}
+                  className={`relative border backdrop-blur-sm rounded-lg transition-all duration-400 ease-out overflow-hidden will-change-[border-color,box-shadow] ${
+                    isActive
+                      ? "border-gold/40 shadow-2xl shadow-gold/10"
+                      : "border-gold/10"
+                  }`}
                 >
-                  {/* Icon */}
-                  <div className="text-5xl mb-4 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
-                    {rule.icon}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/10 to-black/20"></div>
+
+                  <div
+                    className={`absolute top-0 left-0 w-1 bg-gold/60 rounded-l-lg transition-all duration-400 ease-out will-change-[height] ${
+                      isActive ? "h-full" : "h-0"
+                    }`}
+                  ></div>
+
+                  <div
+                    className={`absolute bottom-0 right-0 w-1 bg-gold/60 rounded-r-lg transition-all duration-400 ease-out delay-75 will-change-[height] ${
+                      isActive ? "h-full" : "h-0"
+                    }`}
+                  ></div>
+
+                  <div className="relative p-8 md:p-10">
+                    <div className="flex items-start gap-6">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-4 mb-4">
+                          <div
+                            className={`flex items-center justify-center w-12 h-12 border border-gold/20 rounded transition-all duration-400 ease-out will-change-[transform,border-color] ${
+                              isActive
+                                ? "rotate-45 scale-110 border-gold/40"
+                                : ""
+                            }`}
+                          >
+                            <span
+                              className={`text-gold font-bold text-xl transition-transform duration-400 ease-out will-change-transform ${
+                                isActive ? "-rotate-45" : ""
+                              }`}
+                            >
+                              {index + 1}
+                            </span>
+                          </div>
+
+                          <div>
+                            <h3
+                              className={`text-2xl md:text-3xl font-bold transition-colors duration-300 ease-out ${
+                                isActive ? "text-gold" : "text-gray-100"
+                              }`}
+                            >
+                              {rule.title}
+                            </h3>
+                            <div
+                              className={`h-px bg-gold/50 mt-2 rounded-full transition-all duration-400 ease-out will-change-[width] ${
+                                isActive ? "w-24" : "w-10"
+                              }`}
+                            ></div>
+                          </div>
+                        </div>
+
+                        <p className="text-gray-300 text-base md:text-lg mb-6 leading-relaxed">
+                          {rule.description}
+                        </p>
+
+                        <div
+                          className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                            isActive ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                          }`}
+                        >
+                          <div className="overflow-hidden">
+                            <div
+                              className={`grid grid-cols-1 md:grid-cols-2 gap-3 pt-4 border-t border-gold/10 transition-opacity duration-300 ${
+                                isActive ? "opacity-100" : "opacity-0"
+                              }`}
+                            >
+                              {rule.requirements.map((req, reqIndex) => (
+                                <div
+                                  key={reqIndex}
+                                  className="flex items-start gap-3"
+                                >
+                                  <div className="w-1.5 h-1.5 bg-gold/60 rounded-full mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-400 text-sm md:text-base">
+                                    {req}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-xl md:text-2xl font-bold text-gold mb-3 font-serif">
-                    {rule.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-                    {rule.description}
-                  </p>
-
-                  {/* Decorative corner accents */}
-                  <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold/30 rounded-tl-xl transition-all duration-300 group-hover:border-gold/60" />
-                  <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold/30 rounded-br-xl transition-all duration-300 group-hover:border-gold/60" />
-
-                  {/* Glow effect on hover */}
                   <div
-                    className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ${
-                      rule.color === "gryffindor"
-                        ? "bg-gradient-to-br from-red-500/10 to-transparent"
-                        : rule.color === "slytherin"
-                          ? "bg-gradient-to-br from-green-500/10 to-transparent"
-                          : rule.color === "ravenclaw"
-                            ? "bg-gradient-to-br from-blue-500/10 to-transparent"
-                            : "bg-gradient-to-br from-yellow-500/10 to-transparent"
+                    className={`absolute inset-0 bg-gradient-to-r from-gold/5 via-transparent to-gold/5 rounded-lg transition-opacity duration-400 ease-out pointer-events-none ${
+                      isActive ? "opacity-100" : "opacity-0"
                     }`}
-                  />
+                  ></div>
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Footer Note */}
-        <div className="mt-16 text-center">
-          <div className="inline-block bg-slate-900/60 backdrop-blur-sm border border-gold/30 rounded-lg px-8 py-4">
-            <p className="text-gold font-serif text-lg mb-2">
-              ⚡ Important Notice ⚡
-            </p>
-            <p className="text-gray-300 text-sm max-w-2xl">
-              Violation of any rules may result in disqualification. All
-              participants are expected to uphold the magical standards of fair
-              play and integrity.
-            </p>
-          </div>
-        </div>
+       
       </div>
-
-      <style jsx>{`
-        .shimmer {
-          background: linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(218, 165, 32, 0.1) 50%,
-            transparent 100%
-          );
-          background-size: 200% 100%;
-          animation: shimmer-wave 8s ease-in-out infinite;
-        }
-
-        @keyframes shimmer-wave {
-          0% {
-            background-position: -200% center;
-          }
-          100% {
-            background-position: 200% center;
-          }
-        }
-      `}</style>
     </section>
   );
 };
