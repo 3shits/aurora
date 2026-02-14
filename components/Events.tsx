@@ -72,15 +72,18 @@ const Events = () => {
 
   return (
     <section ref={sectionRef} className="py-12 mx-10">
+
       <h2
-        className={`text-4xl md:text-5xl font-bold text-gold mb-12 text-center font-serif transition-all duration-1000 ${
+        className={`text-4xl md:text-5xl lg:text-6xl text-center font-bold mb-12 transition-all duration-1000 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
         }`}
       >
-        Featured Events
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-300 to-gold">
+          Featured Events
+        </span>
       </h2>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-3 gap-6 mx-2">
         {events.map((event, index) => (
           <div
             key={index}

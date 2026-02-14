@@ -101,8 +101,12 @@ const Timeline = () => {
   return (
     <section ref={sectionRef} className="relative py-12 overflow-hidden ">
       <div className="relative z-10">
-        <h2 className="text-4xl font-bold text-gold mb-16 text-center font-serif">
-          Event Schedule
+        <h2
+          className={`text-4xl md:text-5xl lg:text-6xl text-center font-bold mb-12`}
+        >
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-300 to-gold">
+            Event Schedule
+          </span>
         </h2>
 
         <div className="max-w-6xl mx-auto px-4">

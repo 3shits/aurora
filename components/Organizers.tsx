@@ -70,6 +70,14 @@ const Organizers = () => {
       houseColor:
         "sepia(100%) saturate(300%) hue-rotate(90deg) brightness(0.5)", // Green tint
     },
+    {
+      name: "Dayita Samanta",
+      role: "Community Manager",
+      house: "Gryffindor",
+      image: "/core9.jpeg",
+      houseColor:
+        "sepia(100%) saturate(300%) hue-rotate(330deg) brightness(0.5)", // Red tint
+    },
   ];
 
   return (

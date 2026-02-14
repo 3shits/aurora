@@ -16,14 +16,14 @@ const Faculty = () => {
       image: "/prof1.jpg",
     },
     {
-      name: "Prof. Dr. Moutushi Singh",
-      position: "Convener",
-      image: "/prof2.jpg",
-    },
-    {
       name: "Prof. Banani Chakraborty",
       position: "President IEM-UEM",
       image: "/prof3.jpg",
+    },
+    {
+      name: "Prof. Dr. Moutushi Singh",
+      position: "Convener",
+      image: "/prof2.jpg",
     },
     {
       name: "Dr. Susovan Jana",
@@ -38,7 +38,7 @@ const Faculty = () => {
     {
       name: "Dr. Koushik Dutta",
       position: "Faculty Coordinator",
-      image: "/prof6.jpg",
+      image: "/prof6.jpeg",
     },
   ];
 
@@ -54,7 +54,7 @@ const Faculty = () => {
                 : "opacity-0 -translate-y-10"
             }`}
           >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-500 to-gold animate-shimmer-text">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-300 to-gold">
               Faculty Council
             </span>
           </h2>
@@ -66,17 +66,11 @@ const Faculty = () => {
             }`}
           >
             <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
-            <span className="text-gold text-2xl">✨</span>
+            <span className="text-gold text-sm md:text-base tracking-[0.3em] uppercase">
+              Meet the distinguished wizards guiding our magical journey
+            </span>
             <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent via-gold to-transparent"></div>
           </div>
-
-          <p
-            className={`mt-4 text-gray-400 text-base md:text-lg transition-all duration-1000 delay-300 ${
-              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-          >
-            Meet the distinguished wizards guiding our magical journey
-          </p>
         </div>
 
         {/* First Row - 3 Members */}
