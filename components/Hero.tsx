@@ -132,7 +132,7 @@ const Hero = () => {
 
           {/* Scroll Down Indicator */}
           <div
-            className={`mt-2 md:mt-2 flex flex-col items-center gap-1 transition-all duration-1000 delay-1000 ${
+            className={`mt-4 md:mt-2 flex flex-col items-center gap-1 transition-all duration-1000 delay-1000 ${
               mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
