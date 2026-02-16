@@ -62,6 +62,14 @@ const Footer = () => {
                 <span className="text-xl">📷</span>
               </a>
             </div>
+            <div>
+              <p className="text-sm text-gray-400 mb-1">Refund Policy</p>
+              <p className="text-xs text-gray-400 mb-3 w-2/3">
+                Registration fees are non-refundable under any
+                circumstances.Please make sure to fill in the form carefully
+                before submitting and completing the payment.
+              </p>
+            </div>
           </div>
 
           {/* Map Section */}
