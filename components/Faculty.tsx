@@ -11,15 +11,16 @@ const Faculty = () => {
 
   const facultyMembers = [
     {
-      name: "Prof. Dr. Satyajit Chakrabarti",
+      name: "Prof. Banani Chakrabarti",
+      position: "Patron",
+      image: "/prof3.jpg",
+    },
+    {
+      name: "Prof. Satyajit Chakrabarti",
       position: "Chief Patron",
       image: "/prof1.jpg",
     },
-    {
-      name: "Prof. Banani Chakraborty",
-      position: "President IEM-UEM",
-      image: "/prof3.jpg",
-    },
+    
     {
       name: "Prof. Dr. Moutushi Singh",
       position: "Convener",

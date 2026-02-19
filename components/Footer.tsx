@@ -30,16 +30,38 @@ const Footer = () => {
               </div>
 
               {/* Phone */}
-              <div className="flex items-start gap-3 text-gray-300 hover:text-gold transition-colors duration-300">
-                <span className="text-gold mt-1">📞</span>
-                <div>
+              <div className="gap-3">
+                <div className="flex gap-3 items-start">
+                  <span className="text-gold mt-1">📞</span>
                   <p className="text-sm text-gray-400">Phone</p>
-                  <a href="tel:+917318698164" className="text-base md:text-lg">
-                    +91 7318698164
-                  </a>
+                </div>
+                <div className="ml-5">
+                  <div className="flex items-start text-gray-300 hover:text-gold transition-colors duration-300">
+                    <a
+                      href="tel:+919748052998"
+                      className="text-base md:text-lg"
+                    >
+                      +91 9748052998
+                    </a>
+                  </div>
+                  <div className="flex items-start  text-gray-300 hover:text-gold transition-colors duration-300">
+                    <a
+                      href="tel:+917980485538"
+                      className="text-base md:text-lg"
+                    >
+                      +91 7980485538
+                    </a>
+                  </div>
+                  <div className="flex items-start  text-gray-300 hover:text-gold transition-colors duration-300">
+                    <a
+                      href="tel:+919038513685"
+                      className="text-base md:text-lg"
+                    >
+                      +91 9038513685
+                    </a>
+                  </div>
                 </div>
               </div>
-
               {/* Location */}
               <div className="flex items-start gap-3 text-gray-300">
                 <span className="text-gold mt-1">📍</span>
