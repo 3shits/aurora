@@ -193,7 +193,7 @@ const Faculty = () => {
           className="mx-auto"
           style={{
             marginBottom: "clamp(1rem, 3vw, 3rem)",
-            maxWidth: "min(100%, 32vw)",
+            maxWidth: "min(100%, 55vw)",
           }}
         >
           <FacultyCard member={facultyMembers[2]} index={3} mounted={mounted} />
