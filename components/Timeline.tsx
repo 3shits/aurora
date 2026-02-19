@@ -24,20 +24,12 @@ const Timeline = () => {
             }
           });
         },
-        {
-          threshold: 0.3,
-          rootMargin: "-100px 0px -100px 0px",
-        },
+        { threshold: 0.3, rootMargin: "-100px 0px -100px 0px" },
       );
-
-      if (dayRef) {
-        observer.observe(dayRef);
-      }
-
+      if (dayRef) observer.observe(dayRef);
       return observer;
     });
-
-    return () => observers.forEach((observer) => observer.disconnect());
+    return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   const days = [
@@ -49,6 +41,7 @@ const Timeline = () => {
           title: "Alohadocs Day",
           description: "Magical Documentaries",
           color: "gryffindor",
+          location: "Godrej Genesis, 15th Floor",
         },
       ],
     },
@@ -60,6 +53,7 @@ const Timeline = () => {
           title: "Codium Maxima",
           description: "Wands Ready !!",
           color: "slytherin",
+          location: "IEM Gurukul Campus, Seminar Hall 3",
         },
       ],
     },
@@ -71,6 +65,7 @@ const Timeline = () => {
           title: "Riddiculous Live",
           description: "Liquid Luck for the Soul",
           color: "ravenclaw",
+          location: "IEM Gurukul Campus, Seminar Hall 3",
         },
       ],
     },
@@ -82,6 +77,7 @@ const Timeline = () => {
           title: "Mindus Accio",
           description: "Seek the Golden Snitch",
           color: "ravenclaw",
+          location: "IEM Gurukul Campus, Seminar Hall 3",
         },
       ],
     },
@@ -93,135 +89,205 @@ const Timeline = () => {
           title: "Hackastra",
           description: "Bold Ideas for Wizards",
           color: "ravenclaw",
+          location: "Godrej Genesis, 15th Floor",
         },
       ],
     },
   ];
 
+  /* Single source of truth for the left gutter width.
+     Line sits at half this value so the dot is perfectly centred on it. */
+  const GUTTER = "clamp(2.8rem, 7vw, 6rem)";
+  const LINE_LEFT = "clamp(1.4rem, 3.5vw, 3rem)";
+
   return (
-    <section ref={sectionRef} className="relative py-12 overflow-hidden ">
-      <div className="relative z-10">
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden w-full"
+      style={{ padding: "clamp(2rem, 5vh, 5rem) 0" }}
+    >
+      <div className="relative z-10 w-full">
+        {/* Title */}
         <h2
-          className={`text-4xl md:text-5xl lg:text-6xl text-center font-bold mb-12`}
+          className="text-center font-bold w-full"
+          style={{
+            fontSize: "clamp(1.8rem, 5vw, 4rem)",
+            marginBottom: "clamp(1.5rem, 4vh, 3rem)",
+          }}
         >
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-300 to-gold">
             Event Schedule
           </span>
         </h2>
 
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="relative">
-            {/* Timeline line container */}
-            <div className="absolute left-4 sm:left-8 md:left-20 top-0 bottom-0 w-0.5 bg-slate-700/50">
-              {/* Animated flowing line */}
+        {/* Full-width wrapper — only small side padding so cards reach near the edges */}
+        <div
+          style={{
+            width: "100%",
+            padding: `0 clamp(0.5rem, 2vw, 2rem)`,
+            boxSizing: "border-box",
+          }}
+        >
+          <div className="relative w-full">
+            {/* Timeline vertical line */}
+            <div
+              className="absolute top-0 bottom-0 w-0.5 bg-slate-700/50"
+              style={{ left: LINE_LEFT }}
+            >
               <div
                 className="absolute top-0 left-0 w-full bg-gradient-to-b from-transparent via-gold to-transparent transition-all duration-1000 ease-out"
                 style={{
                   height: `${(activeDay / days.length) * 100}%`,
                   boxShadow:
-                    "0 0 20px rgba(212, 175, 55, 0.6), 0 0 40px rgba(212, 175, 55, 0.3)",
+                    "0 0 20px rgba(212,175,55,0.6), 0 0 40px rgba(212,175,55,0.3)",
                 }}
               >
-                {/* Glowing tip */}
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-gold rounded-full shadow-lg shadow-gold/80 animate-pulse" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-gold rounded-full shadow-lg shadow-gold/80 animate-pulse" />
               </div>
             </div>
 
-            <div className="space-y-12 pl-12 sm:pl-16 md:pl-32">
+            {/* Days column — paddingLeft = GUTTER so cards start after the timeline */}
+            <div
+              className="flex flex-col w-full"
+              style={{ paddingLeft: GUTTER, gap: "clamp(1rem, 3vh, 2.5rem)" }}
+            >
               {days.map((day, dayIndex) => (
                 <div
                   key={dayIndex}
                   ref={(el) => {
                     dayRefs.current[dayIndex] = el;
                   }}
-                  className="relative"
+                  className="relative w-full"
                 >
                   <div
-                    className={`magical-border rounded-lg p-4 sm:p-6 magical-glow bg-slate-800/30 transition-all duration-700 ${
+                    className={`magical-border rounded-lg bg-slate-800/30 transition-all duration-700 w-full ${
                       dayIndex < activeDay
                         ? "opacity-100 translate-x-0"
                         : "opacity-0 translate-x-20"
                     }`}
+                    style={{ padding: "clamp(0.6rem, 2vw, 1.5rem)" }}
                   >
-                    {/* Day badge with connecting line - VERTICAL LAYOUT */}
-                    <div className="absolute -left-12 sm:-left-16 md:-left-32 top-2 flex flex-col items-center">
-                      {/* Timeline dot */}
+                    {/* Dot + day label */}
+                    <div
+                      className="absolute top-2 flex flex-col items-center"
+                      style={{ left: `calc(${GUTTER} * -1)`, width: GUTTER }}
+                    >
+                      {/* Dot */}
                       <div className="relative flex-shrink-0">
                         <div
-                          className={`w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full border-4 flex items-center justify-center transition-all duration-700 ${
+                          className={`rounded-full border-4 flex items-center justify-center transition-all duration-700 ${
                             dayIndex < activeDay
                               ? "border-gold bg-gold scale-100 shadow-lg shadow-gold/60"
                               : "border-slate-600 bg-slate-800 scale-75 opacity-50"
                           }`}
+                          style={{
+                            width: "clamp(1rem, 2vw, 1.75rem)",
+                            height: "clamp(1rem, 2vw, 1.75rem)",
+                          }}
                         >
                           {dayIndex < activeDay && (
-                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full animate-ping" />
+                            <div className="w-1.5 h-1.5 bg-white rounded-full animate-ping" />
                           )}
                         </div>
-                        {/* Connecting horizontal line */}
+                        {/* Horizontal connector to card */}
                         <div
-                          className={`absolute top-1/2 -right-2 sm:-right-3 md:-right-4 w-2 sm:w-3 md:w-4 h-0.5 transition-all duration-700 ${
+                          className={`absolute top-1/2 h-0.5 transition-all duration-700 ${
                             dayIndex < activeDay
                               ? "bg-gold opacity-100"
                               : "bg-slate-600 opacity-30"
                           }`}
+                          style={{
+                            right: "clamp(-0.8rem, -1.5vw, -0.5rem)",
+                            width: "clamp(0.5rem, 1.5vw, 1rem)",
+                          }}
                         />
                       </div>
 
-                      {/* Day label - BELOW THE DOT */}
+                      {/* Day label */}
                       <div
-                        className={`mt-2 text-center transition-all duration-700 ${
+                        className={`mt-1 text-center transition-all duration-700 ${
                           dayIndex < activeDay ? "opacity-100" : "opacity-0"
                         }`}
                       >
-                        <div className="text-sm sm:text-base md:text-lg font-bold text-gold whitespace-nowrap">
+                        <div
+                          className="font-bold text-gold whitespace-nowrap"
+                          style={{ fontSize: "clamp(0.55rem, 1.1vw, 1rem)" }}
+                        >
                           {day.day}
                         </div>
-                        <div className="text-xs text-gray-400 whitespace-nowrap">
+                        <div
+                          className="text-gray-400 whitespace-nowrap"
+                          style={{ fontSize: "clamp(0.5rem, 0.9vw, 0.8rem)" }}
+                        >
                           {day.date}
                         </div>
                       </div>
                     </div>
 
                     {/* Events */}
-                    <div className="space-y-3 sm:space-y-4 w-full">
+                    <div className="w-full">
                       {day.events.map((event, eventIndex) => (
                         <div
                           key={eventIndex}
-                          className={`p-3 sm:p-4 rounded-lg bg-slate-900/40 hover:bg-slate-900/60 transition-all duration-500 transform hover:scale-[1.02] hover:shadow-xl border border-slate-700/30 ${
+                          className={`rounded-lg bg-slate-900/40 hover:bg-slate-900/60 transition-all duration-500 hover:scale-[1.01] hover:shadow-xl border border-slate-700/30 w-full ${
                             dayIndex < activeDay
                               ? "opacity-100 translate-y-0"
                               : "opacity-0 translate-y-4"
                           }`}
                           style={{
+                            padding: "clamp(0.5rem, 1.5vw, 1.2rem)",
                             transitionDelay:
                               dayIndex < activeDay
                                 ? `${eventIndex * 100 + 200}ms`
                                 : "0ms",
                           }}
                         >
-                          <h4 className="text-base sm:text-lg md:text-xl font-bold text-gold mb-1">
+                          <h4
+                            className="font-bold text-gold"
+                            style={{
+                              fontSize: "clamp(0.85rem, 1.8vw, 1.5rem)",
+                              marginBottom: "clamp(0.2rem, 0.5vh, 0.4rem)",
+                            }}
+                          >
                             {event.title}
                           </h4>
-
-                          <p className="text-gray-300 text-sm sm:text-base">
-                            {event.description}
+                          <p
+                            className="text-gray-300"
+                            style={{ fontSize: "clamp(0.7rem, 1.4vw, 1.1rem)" }}
+                          >
+                            📍 {event.location}
+                          </p>
+                          <p
+                            className="text-gray-400"
+                            style={{ fontSize: "clamp(0.7rem, 1.4vw, 1.1rem)" }}
+                          >
+                            🎩 {event.description}
                           </p>
 
-                          {/* Elder Wand with spell beam */}
-                          <div className="relative mt-4 flex items-center gap-2">
+                          {/* Elder Wand + spell beam */}
+                          <div
+                            className="relative flex items-center w-full"
+                            style={{
+                              marginTop: "clamp(0.4rem, 1.5vh, 1rem)",
+                              gap: "clamp(0.3rem, 1vw, 0.6rem)",
+                            }}
+                          >
                             <img
                               src="/elder wand.png"
                               alt="Elder Wand"
-                              className={`w-12 sm:w-44 h-auto object-contain transition-all duration-500 ${
+                              className={`h-auto object-contain flex-shrink-0 transition-all duration-500 ${
                                 dayIndex < activeDay
                                   ? "opacity-100"
                                   : "opacity-0"
                               }`}
+                              style={{ width: "clamp(2rem, 7vw, 10rem)" }}
                             />
 
                             {/* Spell beam */}
-                            <div className="relative flex-1 h-1 overflow-hidden">
+                            <div
+                              className="relative flex-1 overflow-hidden"
+                              style={{ height: "clamp(2px, 0.3vw, 4px)" }}
+                            >
                               <div
                                 className={`absolute inset-0 bg-gradient-to-r from-gold via-yellow-400 to-transparent transition-all duration-1000 ${
                                   dayIndex < activeDay
@@ -232,41 +298,27 @@ const Timeline = () => {
                                   transformOrigin: "left",
                                   boxShadow:
                                     dayIndex < activeDay
-                                      ? "0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.4)"
+                                      ? "0 0 10px rgba(212,175,55,0.8), 0 0 20px rgba(212,175,55,0.4)"
                                       : "none",
                                 }}
                               />
-                              {/* Sparkles - appear with delay */}
-                              <div
-                                className={`absolute top-1/2 -translate-y-1/2 left-1/4 w-1.5 h-1.5 bg-white rounded-full transition-all duration-300 delay-700 ${
-                                  dayIndex < activeDay
-                                    ? "opacity-100 scale-100"
-                                    : "opacity-0 scale-0"
-                                }`}
-                                style={{
-                                  boxShadow: "0 0 4px rgba(255, 255, 255, 0.8)",
-                                }}
-                              />
-                              <div
-                                className={`absolute top-1/2 -translate-y-1/2 left-1/2 w-1.5 h-1.5 bg-white rounded-full transition-all duration-300 delay-900 ${
-                                  dayIndex < activeDay
-                                    ? "opacity-100 scale-100"
-                                    : "opacity-0 scale-0"
-                                }`}
-                                style={{
-                                  boxShadow: "0 0 4px rgba(255, 255, 255, 0.8)",
-                                }}
-                              />
-                              <div
-                                className={`absolute top-1/2 -translate-y-1/2 left-3/4 w-1.5 h-1.5 bg-white rounded-full transition-all duration-300 delay-1100 ${
-                                  dayIndex < activeDay
-                                    ? "opacity-100 scale-100"
-                                    : "opacity-0 scale-0"
-                                }`}
-                                style={{
-                                  boxShadow: "0 0 4px rgba(255, 255, 255, 0.8)",
-                                }}
-                              />
+                              {[1 / 4, 1 / 2, 3 / 4].map((pos, i) => (
+                                <div
+                                  key={i}
+                                  className={`absolute top-1/2 -translate-y-1/2 bg-white rounded-full transition-all duration-300 ${
+                                    dayIndex < activeDay
+                                      ? "opacity-100 scale-100"
+                                      : "opacity-0 scale-0"
+                                  }`}
+                                  style={{
+                                    left: `${pos * 100}%`,
+                                    width: "clamp(3px, 0.4vw, 6px)",
+                                    height: "clamp(3px, 0.4vw, 6px)",
+                                    transitionDelay: `${700 + i * 200}ms`,
+                                    boxShadow: "0 0 4px rgba(255,255,255,0.8)",
+                                  }}
+                                />
+                              ))}
                             </div>
                           </div>
                         </div>
@@ -281,18 +333,6 @@ const Timeline = () => {
       </div>
 
       <style jsx>{`
-        @keyframes pulse {
-          0%,
-          100% {
-            opacity: 0.2;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 0.4;
-            transform: scale(1.05);
-          }
-        }
-
         .shimmer {
           background: linear-gradient(
             90deg,
@@ -303,7 +343,6 @@ const Timeline = () => {
           background-size: 200% 100%;
           animation: shimmer-wave 8s ease-in-out infinite;
         }
-
         @keyframes shimmer-wave {
           0% {
             background-position: -200% center;

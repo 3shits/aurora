@@ -2,108 +2,178 @@
 
 const Footer = () => {
   return (
-    <footer className="relative w-full bg-black/40 backdrop-blur-sm border-t border-gold/20 py-12 md:py-16">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          {/* Contact Us Section */}
-          <div className="space-y-6">
+    <footer
+      className="relative w-full bg-black/40 backdrop-blur-sm border-t border-gold/20"
+      style={{ padding: "clamp(2rem, 5vh, 4rem) 0" }}
+    >
+      <div style={{ width: "100%", padding: "0 clamp(1rem, 4vw, 4rem)" }}>
+        {/* Two columns — Contact | Map */}
+        <div
+          className="flex flex-col md:flex-row md:justify-between"
+          style={{ gap: "clamp(2rem, 5vw, 5rem)" }}
+        >
+          {/* ── LEFT: Contact ── */}
+          <div
+            className="flex flex-col"
+            style={{ gap: "clamp(1rem, 2.5vh, 1.5rem)", flex: "1 1 0" }}
+          >
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-gold mb-4">
+              <h3
+                className="font-bold text-gold"
+                style={{
+                  fontSize: "clamp(1.2rem, 2.5vw, 2rem)",
+                  marginBottom: "clamp(0.5rem, 1vh, 0.75rem)",
+                }}
+              >
                 Contact Us
               </h3>
-              <div className="h-px w-20 bg-gold/50 mb-6"></div>
+              <div className="h-px w-16 bg-gold/50" />
             </div>
 
-            <div className="space-y-4">
-              {/* Email */}
-              <div className="flex items-start gap-3 text-gray-300 hover:text-gold transition-colors duration-300">
-                <span className="text-gold mt-1">📧</span>
-                <div>
-                  <p className="text-sm text-gray-400">Email</p>
-                  <a
-                    href="mailto:aurora@iem.edu"
-                    className="text-base md:text-lg"
-                  >
-                    iemiete2022@gmail.com
-                  </a>
-                </div>
-              </div>
-
-              {/* Phone */}
-              <div className="gap-3">
-                <div className="flex gap-3 items-start">
-                  <span className="text-gold mt-1">📞</span>
-                  <p className="text-sm text-gray-400">Phone</p>
-                </div>
-                <div className="ml-5">
-                  <div className="flex items-start text-gray-300 hover:text-gold transition-colors duration-300">
-                    <a
-                      href="tel:+919748052998"
-                      className="text-base md:text-lg"
-                    >
-                      +91 9748052998
-                    </a>
-                  </div>
-                  <div className="flex items-start  text-gray-300 hover:text-gold transition-colors duration-300">
-                    <a
-                      href="tel:+917980485538"
-                      className="text-base md:text-lg"
-                    >
-                      +91 7980485538
-                    </a>
-                  </div>
-                  <div className="flex items-start  text-gray-300 hover:text-gold transition-colors duration-300">
-                    <a
-                      href="tel:+919038513685"
-                      className="text-base md:text-lg"
-                    >
-                      +91 9038513685
-                    </a>
-                  </div>
-                </div>
-              </div>
-              {/* Location */}
-              <div className="flex items-start gap-3 text-gray-300">
-                <span className="text-gold mt-1">📍</span>
-                <div>
-                  <p className="text-sm text-gray-400">Location</p>
-                  <p className="text-base md:text-lg">
-                    IEM Gurukul Campus
-                    <br />
-                    Kolkata, West Bengal
-                  </p>
-                </div>
+            {/* Email */}
+            <div className="flex items-start gap-3 text-gray-300 hover:text-gold transition-colors duration-300">
+              <span className="text-gold mt-1">📧</span>
+              <div>
+                <p
+                  className="text-gray-400"
+                  style={{ fontSize: "clamp(0.7rem, 1.1vw, 0.9rem)" }}
+                >
+                  Email
+                </p>
+                <a
+                  href="mailto:iemiete2022@gmail.com"
+                  style={{ fontSize: "clamp(0.8rem, 1.4vw, 1.1rem)" }}
+                >
+                  iemiete2022@gmail.com
+                </a>
               </div>
             </div>
-            <div className="pt-4">
-              <p className="text-sm text-gray-400 mb-3">Follow Us</p>
+
+            {/* Phone */}
+            <div>
+              <div className="flex gap-3 items-center">
+                <span className="text-gold">📞</span>
+                <p
+                  className="text-gray-400"
+                  style={{ fontSize: "clamp(0.7rem, 1.1vw, 0.9rem)" }}
+                >
+                  Phone
+                </p>
+              </div>
+
+              <div
+                className="ml-7 flex flex-col"
+                style={{
+                  gap: "clamp(0.15rem, 0.5vh, 0.35rem)",
+                  marginTop: "clamp(0.2rem, 0.5vh, 0.4rem)",
+                }}
+              >
+                {["+91 9748052998", "+91 7980485538", "+91 9038513685"].map(
+                  (num) => (
+                    <a
+                      key={num}
+                      href={`tel:${num.replace(/\s/g, "")}`}
+                      className="text-gray-300 hover:text-gold transition-colors duration-300"
+                      style={{ fontSize: "clamp(0.8rem, 1.4vw, 1.1rem)" }}
+                    >
+                      {num}
+                    </a>
+                  ),
+                )}
+              </div>
+            </div>
+
+            {/* Location */}
+            <div className="flex items-start gap-3 text-gray-300">
+              <span className="text-gold mt-1">📍</span>
+              <div>
+                <p
+                  className="text-gray-400"
+                  style={{ fontSize: "clamp(0.7rem, 1.1vw, 0.9rem)" }}
+                >
+                  Location
+                </p>
+                <p style={{ fontSize: "clamp(0.8rem, 1.4vw, 1.1rem)" }}>
+                  IEM Gurukul Campus
+                  <br />
+                  Kolkata, West Bengal
+                </p>
+              </div>
+            </div>
+
+            {/* Instagram */}
+            <div>
+              <p
+                className="text-gray-400"
+                style={{
+                  fontSize: "clamp(0.7rem, 1.1vw, 0.9rem)",
+                  marginBottom: "clamp(0.3rem, 0.8vh, 0.6rem)",
+                }}
+              >
+                Follow Us
+              </p>
+
               <a
                 href="https://www.instagram.com/iemietestudentsforum?igsh=NWVmc3Q5dXB3YzB5"
-                className="w-10 h-10 border border-gold/30 rounded flex items-center justify-center text-gold/60 hover:text-gold hover:border-gold transition-all duration-300"
+                className="inline-flex items-center justify-center border border-gold/30 rounded text-gold/60 hover:text-gold hover:border-gold transition-all duration-300"
+                style={{
+                  width: "clamp(2rem, 3.5vw, 2.8rem)",
+                  height: "clamp(2rem, 3.5vw, 2.8rem)",
+                  fontSize: "clamp(1rem, 1.6vw, 1.4rem)",
+                }}
               >
-                <span className="text-xl">📷</span>
+                📷
               </a>
             </div>
+
+            {/* Refund Policy */}
             <div>
-              <p className="text-sm text-gray-400 mb-1">Refund Policy</p>
-              <p className="text-xs text-gray-400 mb-3 w-2/3">
-                Registration fees are non-refundable under any
-                circumstances.Please make sure to fill in the form carefully
-                before submitting and completing the payment.
+              <p
+                className="text-gray-400"
+                style={{
+                  fontSize: "clamp(0.7rem, 1.1vw, 0.9rem)",
+                  marginBottom: "clamp(0.15rem, 0.4vh, 0.3rem)",
+                }}
+              >
+                Refund Policy
+              </p>
+              <p
+                className="text-gray-400"
+                style={{
+                  fontSize: "clamp(0.65rem, 1vw, 0.8rem)",
+                  maxWidth: "38ch",
+                  lineHeight: 1.6,
+                }}
+              >
+                Registration fees are non-refundable under any circumstances.
+                Please make sure to fill in the form carefully before submitting
+                and completing the payment.
               </p>
             </div>
           </div>
 
-          {/* Map Section */}
-          <div className="space-y-6">
+          {/* ── RIGHT: Map ── */}
+          <div
+            className="flex flex-col"
+            style={{ gap: "clamp(1rem, 2.5vh, 1.5rem)", flex: "1 1 0" }}
+          >
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-gold mb-4">
+              <h3
+                className="font-bold text-gold"
+                style={{
+                  fontSize: "clamp(1.2rem, 2.5vw, 2rem)",
+                  marginBottom: "clamp(0.5rem, 1vh, 0.75rem)",
+                }}
+              >
                 Find Us
               </h3>
-              <div className="h-px w-20 bg-gold/50 mb-6"></div>
+              <div className="h-px w-16 bg-gold/50" />
             </div>
 
-            <div className="relative h-64 md:h-80 border-2 border-gold/20 rounded-lg overflow-hidden">
+            <div
+              className="relative border-2 border-gold/20 rounded-lg overflow-hidden w-full"
+              style={{ height: "clamp(12rem, 30vh, 26rem)" }}
+            >
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.1225697363902!2d88.4312934752682!3d22.57451863290014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02751153ddb371%3A0x816e6fee5a5aac55!2sIEM%20Gurukul%20Building!5e0!3m2!1sen!2sin!4v1771089036642!5m2!1sen!2sin"
                 width="100%"
@@ -113,50 +183,76 @@ const Footer = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="map-iframe"
-              ></iframe>
-
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent"></div>
+              />
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent" />
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gold/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-3">
-              <img
-                src="/iemlogo.webp"
-                alt="IEM Logo"
-                className="w-12 h-10 brightness-150 opacity-80"
-              />
-              <div className="h-8 w-px bg-gold/30"></div>
-              <img
-                src="/uem.webp"
-                alt="UEM Logo"
-                className="w-14 h-12 brightness-150 opacity-80"
-              />
-              <div className="h-8 w-px bg-gold/30"></div>
-              <img
-                src="/ieteLogo.png"
-                alt="IETE Logo"
-                className="w-16 h-auto brightness-150 opacity-80"
-              />
-              <div className="h-8 w-px bg-gold/30"></div>
-              <img
-                src="/sponsor.png"
-                alt="Algozenith"
-                className="w-16 h-auto brightness-150 opacity-80"
-              />
-            </div>
+        {/* ── Bottom Bar ── */}
+        <div
+          className="border-t border-gold/10 flex flex-col md:flex-row md:justify-between md:items-center"
+          style={{
+            marginTop: "clamp(1.5rem, 4vh, 3rem)",
+            paddingTop: "clamp(1rem, 3vh, 2rem)",
+            gap: "clamp(1rem, 2vh, 1.5rem)",
+          }}
+        >
+          {/* Logos */}
+          <div
+            className="flex items-center flex-wrap"
+            style={{ gap: "clamp(0.5rem, 1.5vw, 1.2rem)" }}
+          >
+            {[
+              { src: "/iemlogo.webp", alt: "IEM Logo" },
+              { src: "/uem.webp", alt: "UEM Logo" },
+              { src: "/ieteLogo.png", alt: "IETE Logo" },
+              { src: "/sponsor.png", alt: "Algozenith" },
+            ].map((logo, i, arr) => (
+              <div
+                key={logo.alt}
+                className="flex items-center"
+                style={{ gap: "clamp(0.5rem, 1.5vw, 1.2rem)" }}
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="brightness-150 opacity-80 object-contain"
+                  style={{
+                    height: "clamp(1.8rem, 3.5vw, 3rem)",
+                    width: "auto",
+                  }}
+                />
+                {i < arr.length - 1 && (
+                  <div
+                    className="bg-gold/30"
+                    style={{
+                      width: "1px",
+                      height: "clamp(1.5rem, 3vw, 2.5rem)",
+                    }}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
 
-            <div className="text-center md:text-right">
-              <p className="text-gray-400 text-sm">
-                &copy; 2026 Aurora - IETE IEM. All rights reserved.
-              </p>
-              <p className="text-gold/60 text-xs mt-1">
-                Organized by IETE Students&apos; Chapter, IEM
-              </p>
-            </div>
+          {/* Copyright */}
+          <div className="text-center md:text-right">
+            <p
+              className="text-gray-400"
+              style={{ fontSize: "clamp(0.65rem, 1.1vw, 0.9rem)" }}
+            >
+              &copy; 2026 Aurora - IETE IEM. All rights reserved.
+            </p>
+            <p
+              className="text-gold/60"
+              style={{
+                fontSize: "clamp(0.6rem, 0.9vw, 0.8rem)",
+                marginTop: "clamp(0.1rem, 0.3vh, 0.25rem)",
+              }}
+            >
+              Organized by IETE Students&apos; Forum, IEM
+            </p>
           </div>
         </div>
       </div>
