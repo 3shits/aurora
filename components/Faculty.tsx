@@ -45,36 +45,36 @@ const FacultyCard = ({
   mounted: boolean;
 }) => (
   <div
-    className={`group transition-all duration-1000 h-full ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}`}
+    className={`group transition-all duration-1000 h-full w-full ${
+      mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
+    }`}
     style={{ transitionDelay: `${index * 100}ms` }}
   >
     <div
-      className="relative faculty-card backdrop-blur-sm rounded-2xl border border-gold/20 hover:border-gold/60 transition-all duration-500 hover:shadow-2xl hover:shadow-gold/30 hover:-translate-y-3 h-full"
+      className="relative backdrop-blur-sm rounded-2xl border border-gold/20 hover:border-gold/60 transition-all duration-500 hover:shadow-2xl hover:shadow-gold/30 hover:-translate-y-3 h-full"
       style={{ padding: "clamp(1rem, 2.5vw, 2rem)" }}
     >
-      {/* Background */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-black/10 via-black/20 to-black/30" />
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-      {/* Corner decorations */}
+      {/* Corners */}
       <div className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-gold/40 group-hover:border-gold transition-colors duration-300" />
       <div className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-gold/40 group-hover:border-gold transition-colors duration-300" />
       <div className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-gold/40 group-hover:border-gold transition-colors duration-300" />
       <div className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-gold/40 group-hover:border-gold transition-colors duration-300" />
 
       <div className="relative z-10 flex flex-col items-center">
-        {/* Photo — fluid size based on viewport width */}
+        {/* Photo */}
         <div
           className="relative"
           style={{
             width: "clamp(8rem, 18vw, 20rem)",
             height: "clamp(8rem, 18vw, 20rem)",
             marginBottom: "clamp(0.75rem, 2vw, 1.5rem)",
-            flexShrink: 0,
           }}
         >
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gold/30 to-yellow-600/30 blur-xl group-hover:blur-2xl transition-all duration-500" />
-          <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-gold/40 group-hover:border-gold transition-all duration-500 group-hover:scale-105 group-hover:rotate-3">
+          <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-gold/40 group-hover:border-gold transition-all duration-500 group-hover:scale-105">
             <img
               src={member.image}
               alt={member.name}
@@ -84,7 +84,6 @@ const FacultyCard = ({
           </div>
         </div>
 
-        {/* Name */}
         <h3
           className="font-bold text-center text-gray-100 group-hover:text-gold transition-colors duration-300"
           style={{
@@ -95,7 +94,6 @@ const FacultyCard = ({
           {member.name}
         </h3>
 
-        {/* Position */}
         <p
           className="text-center text-gray-400 group-hover:text-gray-300 transition-colors duration-300"
           style={{ fontSize: "clamp(0.75rem, 1.2vw, 1.1rem)" }}
@@ -103,7 +101,6 @@ const FacultyCard = ({
           {member.position}
         </p>
 
-        {/* Divider */}
         <div
           className="h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent group-hover:via-gold transition-all duration-500"
           style={{
@@ -119,9 +116,7 @@ const FacultyCard = ({
 const Faculty = () => {
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   return (
     <section
@@ -132,94 +127,80 @@ const Faculty = () => {
         className="relative z-10 w-full"
         style={{ padding: "0 clamp(1rem, 4vw, 4rem)" }}
       >
-        {/* Section Title */}
+        {/* Title */}
         <div
           className="text-center"
           style={{ marginBottom: "clamp(2rem, 5vh, 5rem)" }}
         >
           <h2
-            className={`font-bold transition-all duration-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}`}
-            style={{
-              fontSize: "clamp(2rem, 5vw, 4rem)",
-              marginBottom: "clamp(0.5rem, 1.5vh, 1rem)",
-            }}
+            className={`font-bold transition-all duration-1000 ${
+              mounted
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-10"
+            }`}
+            style={{ fontSize: "clamp(2rem, 5vw, 4rem)" }}
           >
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold via-yellow-300 to-gold">
               Faculty Council
             </span>
           </h2>
+        </div>
+
+        {/* Shared Width Container */}
+        <div className="mx-auto w-full max-w-[1200px]">
+          {/* Row 1 → 2 Cards */}
           <div
-            className={`flex items-center justify-center gap-4 transition-all duration-1000 delay-200 ${mounted ? "opacity-100 scale-100" : "opacity-0 scale-0"}`}
-            style={{ marginTop: "clamp(0.5rem, 1.5vh, 1.5rem)" }}
+            className="grid grid-cols-1 md:grid-cols-2"
+            style={{
+              gap: "clamp(1rem, 3vw, 3rem)",
+              marginBottom: "clamp(1rem, 3vw, 3rem)",
+            }}
           >
-            <div
-              className="h-px bg-gradient-to-r from-transparent via-gold to-transparent"
-              style={{ width: "clamp(2rem, 6vw, 6rem)" }}
-            />
-            <span
-              className="text-gold uppercase text-center tracking-widest"
-              style={{ fontSize: "clamp(0.6rem, 1vw, 0.9rem)" }}
-            >
-              Meet the distinguished wizards guiding our magical journey
-            </span>
-            <div
-              className="h-px bg-gradient-to-l from-transparent via-gold to-transparent"
-              style={{ width: "clamp(2rem, 6vw, 6rem)" }}
-            />
+            {facultyMembers.slice(0, 2).map((member, i) => (
+              <FacultyCard
+                key={member.name}
+                member={member}
+                index={i}
+                mounted={mounted}
+              />
+            ))}
+          </div>
+
+          {/* Row 2 → PERFECTLY CENTERED */}
+          <div
+            className="grid grid-cols-1 md:grid-cols-3"
+            style={{
+              gap: "clamp(1rem, 3vw, 3rem)",
+              marginBottom: "clamp(1rem, 3vw, 3rem)",
+            }}
+          >
+            <div className="hidden md:block" />
+            <div className="md:col-start-2">
+              <FacultyCard
+                member={facultyMembers[2]}
+                index={2}
+                mounted={mounted}
+              />
+            </div>
+            <div className="hidden md:block" />
+          </div>
+
+          {/* Row 3 → 3 Cards */}
+          <div
+            className="grid grid-cols-1 md:grid-cols-3"
+            style={{ gap: "clamp(1rem, 3vw, 3rem)" }}
+          >
+            {facultyMembers.slice(3, 6).map((member, i) => (
+              <FacultyCard
+                key={member.name}
+                member={member}
+                index={i + 3}
+                mounted={mounted}
+              />
+            ))}
           </div>
         </div>
-
-        {/* Row 1 — 2 cards centered, capped width so they don't stretch too wide */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 mx-auto"
-          style={{
-            gap: "clamp(1rem, 3vw, 3rem)",
-            marginBottom: "clamp(1rem, 3vw, 3rem)",
-            maxWidth: "min(100%, 70vw)",
-          }}
-        >
-          {facultyMembers.slice(0, 2).map((member, i) => (
-            <FacultyCard
-              key={member.name}
-              member={member}
-              index={i + 1}
-              mounted={mounted}
-            />
-          ))}
-        </div>
-
-        {/* Row 2 — 1 card centered */}
-        <div
-          className="mx-auto"
-          style={{
-            marginBottom: "clamp(1rem, 3vw, 3rem)",
-            maxWidth: "min(100%, 55vw)",
-          }}
-        >
-          <FacultyCard member={facultyMembers[2]} index={3} mounted={mounted} />
-        </div>
-
-        {/* Row 3 — 3 cards full width */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-3"
-          style={{ gap: "clamp(1rem, 3vw, 3rem)" }}
-        >
-          {facultyMembers.slice(3, 6).map((member, i) => (
-            <FacultyCard
-              key={member.name}
-              member={member}
-              index={i + 4}
-              mounted={mounted}
-            />
-          ))}
-        </div>
       </div>
-
-      <style jsx>{`
-        .delay-200 {
-          transition-delay: 200ms;
-        }
-      `}</style>
     </section>
   );
 };
